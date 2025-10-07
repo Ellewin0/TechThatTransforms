@@ -3,311 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech That Transforms: Supporting Students Using Assistive Technology</title>
+    <title>University AT Tool Finder</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Energetic & Playful -->
-    <!-- 
-        Application Structure Plan: The infographic follows a logical narrative designed for university staff. 
-        1.  Hook: An impactful statistic to grab attention and establish relevance.
-        2.  Definition: A clear, non-technical explanation of Assistive Technology (AT), breaking it down into simple categories (Low-tech vs. High-tech) to build foundational knowledge.
-        3.  Data Overview (Common Tools): This addresses the first core pillar of the webinar. It uses charts to visually represent which AT categories and specific tools are most prevalent among students. This data-driven approach is more compelling than a simple list.
-        4.  On-Campus Resources (AT Rooms): This covers the second pillar. It acts as a practical, ECU-specific guide, showing staff where to direct students for specialized support.
-        5.  Call to Action (Accessible Practices): This covers the third pillar, turning knowledge into action. It presents three simple, high-impact tips in a clear, step-by-step format that staff can immediately apply to their work.
-        This structure was chosen to guide the user from general awareness to specific, actionable steps, making the information both educational and practical for a busy staff audience.
-    -->
-    <!-- 
-        Visualization & Content Choices:
-        - Impact Statistic -> Goal: Inform -> Single Big Number -> Justification: Immediately conveys the scale and importance of the issue. Method: Styled HTML.
-        - AT Definition -> Goal: Organize -> Side-by-Side Comparison Cards -> Justification: Clearly contrasts low-tech and high-tech examples for better comprehension. Method: HTML/CSS with Tailwind.
-        - AT Category Distribution -> Goal: Compare -> Donut Chart -> Justification: Excellent for showing part-to-whole relationships and giving a quick overview of which areas of support are most common. Library: Chart.js/Canvas (NO SVG).
-        - Top 5 Most Used Tools -> Goal: Compare/Rank -> Horizontal Bar Chart -> Justification: Directly answers the webinar's question of "most commonly used tools" in a clear, ranked format. Library: Chart.js/Canvas (NO SVG).
-        - AT Room Features -> Goal: Organize/Inform -> Icon & Text List -> Justification: Provides a quick, scannable list of available resources, using Unicode characters for visual cues without relying on images or SVG. Method: HTML/CSS with Tailwind.
-        - Accessible Resource Tips -> Goal: Organize/Process -> Numbered Step-by-Step Cards -> Justification: Breaks down the process of creating accessible content into three manageable, memorable actions. This is more effective than a paragraph of text. Method: HTML/CSS with Tailwind.
-        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
-    -->
+    <!-- Use Inter Font -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px; 
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
+            background-color: #f3f4f6;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-gray-800">
+<body class="p-4 md:p-8">
 
-    <div class="container mx-auto px-4 py-8 md:px-8 md:py-12">
-
-        <header class="text-center mb-12 md:mb-16">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-[#00A9E0] mb-3">Tech That Transforms</h1>
-            <p class="text-xl md:text-2xl font-semibold text-gray-700">A Staff Guide to Supporting Students with Assistive Technology at ECU</p>
+    <div class="max-w-7xl mx-auto">
+        <header class="text-center mb-10 p-6 bg-white shadow-lg rounded-xl">
+            <h1 class="text-4xl font-extrabold text-blue-800 mb-2">AT Tool Finder</h1>
+            <p class="text-lg text-gray-600">Explore, filter, and discover assistive technologies for tertiary education.</p>
         </header>
 
-        <main class="space-y-12 md:space-y-16">
-
-            <section class="text-center bg-white p-8 rounded-xl shadow-lg border-t-4 border-[#F7A823]">
-                <p class="text-2xl md:text-3xl font-bold text-gray-700 mb-2">Did you know that nearly</p>
-                <p class="text-7xl md:text-8xl font-extrabold text-[#6E267E]">1 in 10</p>
-                <p class="text-2xl md:text-3xl font-bold text-gray-700 mt-2">students in Australian higher education are registered with a disability?</p>
-                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Empowering them to succeed starts with understanding the tools they use and ensuring our learning environment is built to be inclusive from the ground up.</p>
-            </section>
-
-            <section>
-                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">What is Assistive Technology?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-bold text-[#00A9E0] mb-3">Low-Tech & Simple</h3>
-                        <p class="text-gray-600">These are simple, often non-electronic tools that help students manage their learning. They are about reducing barriers in straightforward, practical ways.</p>
-                        <ul class="mt-4 space-y-2 text-gray-700">
-                            <li><span class="text-[#00A9E0] font-bold mr-2">›</span>Pencil grips for writing</li>
-                            <li><span class="text-[#00A9E0] font-bold mr-2">›</span>Colored overlays for reading</li>
-                            <li><span class="text-[#00A9E0] font-bold mr-2">›</span>Highlighters and sticky notes</li>
-                            <li><span class="text-[#00A9E0] font-bold mr-2">›</span>Physical day planners</li>
-                        </ul>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-bold text-[#75C141] mb-3">High-Tech & Digital</h3>
-                        <p class="text-gray-600">These are the software applications and devices that students use to access digital content and express their knowledge in alternative ways.</p>
-                         <ul class="mt-4 space-y-2 text-gray-700">
-                            <li><span class="text-[#75C141] font-bold mr-2">›</span>Text-to-speech software</li>
-                            <li><span class="text-[#75C141] font-bold mr-2">›</span>Voice recognition (dictation)</li>
-                            <li><span class="text-[#75C141] font-bold mr-2">›</span>Screen readers for blind users</li>
-                            <li><span class="text-[#75C141] font-bold mr-2">›</span>Digital note-taking apps</li>
-                        </ul>
-                    </div>
+        <!-- Search and Filter Controls -->
+        <div class="bg-white p-6 shadow-lg rounded-xl mb-8 sticky top-0 z-10 border-b border-gray-200">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                
+                <!-- Search Input -->
+                <div>
+                    <label for="search-input" class="block text-sm font-medium text-gray-700 mb-1">Search Tools</label>
+                    <input type="text" id="search-input" placeholder="e.g., Reader, ADHD, Mac" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-sm transition">
                 </div>
-                <div class="mt-8 bg-purple-50 p-6 rounded-lg text-center max-w-4xl mx-auto border-l-4 border-[#6E267E]">
-                    <p class="font-bold text-lg text-[#6E267E]">The "Digital Curb-Cut" Effect</p>
-                    <p class="text-gray-700 mt-2">Just like curb cuts on a footpath benefit everyone (not just wheelchair users), technologies like captions and text-to-speech support all learners, including international students and those who prefer to learn by listening.</p>
+                
+                <!-- Category Filter -->
+                <div>
+                    <label for="category-filter" class="block text-sm font-medium text-gray-700 mb-1">Filter by Category</label>
+                    <select id="category-filter" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-sm appearance-none bg-white">
+                        <option value="All">All Categories</option>
+                        <!-- Options populated by JS -->
+                    </select>
                 </div>
-            </section>
 
-            <section>
-                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">The Student's Toolkit: Commonly Used AT</h2>
-                <p class="max-w-3xl mx-auto text-center text-gray-600 mb-10">While every student's toolkit is unique, data shows that most usage falls into a few key categories. Literacy and note-taking supports are by far the most common, highlighting the importance of text-based resources being accessible.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <h3 class="text-xl font-bold text-center mb-4">AT Usage by Category</h3>
-                        <div class="chart-container">
-                            <canvas id="categoryChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <h3 class="text-xl font-bold text-center mb-4">Top 5 Most Common Tools</h3>
-                         <div class="chart-container" style="max-width: 600px;">
-                            <canvas id="topToolsChart"></canvas>
-                        </div>
-                    </div>
+                <!-- Exam Approved Filter -->
+                <div>
+                    <label for="exam-filter" class="block text-sm font-medium text-gray-700 mb-1">Exam Status</label>
+                    <select id="exam-filter" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-sm appearance-none bg-white">
+                        <option value="All">All Statuses</option>
+                        <option value="Yes">Exam Approved Only</option>
+                        <option value="No">Not Exam Approved Only</option>
+                    </select>
                 </div>
-            </section>
-            
-            <section class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-[#00A9E0]">
-                <h2 class="text-3xl font-bold text-center mb-2 text-gray-800">Explore ECU's Assistive Technology Rooms</h2>
-                <p class="max-w-3xl mx-auto text-center text-gray-600 mb-8">For students needing specialized software or a quiet, distraction-reduced environment, ECU provides dedicated AT Rooms on campus. These spaces are bookable for registered students.</p>
-                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
-                    <div class="space-y-4">
-                        <div class="flex items-center"><span class="text-3xl mr-4">🖥️</span><div><span class="font-bold">Large Monitors:</span> For low vision & focus.</div></div>
-                        <div class="flex items-center"><span class="text-3xl mr-4">🪑</span><div><span class="font-bold">Ergonomic Furniture:</span> Height-adjustable desks and chairs.</div></div>
-                        <div class="flex items-center"><span class="text-3xl mr-4">🖨️</span><div><span class="font-bold">Scanners with OCR:</span> To digitize physical documents.</div></div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="flex items-center"><span class="text-3xl mr-4">🎙️</span><div><span class="font-bold">Dictation Booths:</span> Sound-proofed for voice recognition software.</div></div>
-                        <div class="flex items-center"><span class="text-3xl mr-4">💡</span><div><span class="font-bold">Adjustable Lighting:</span> To reduce glare and visual stress.</div></div>
-                        <div class="flex items-center"><span class="text-3xl mr-4">🧑‍💻</span><div><span class="font-bold">Specialized Software:</span> Access to Dragon, JAWS, ZoomText & more.</div></div>
-                    </div>
-                </div>
-                 <p class="text-center mt-8 text-gray-700 font-semibold">To get access, students should be directed to the Access and Inclusion team.</p>
-            </section>
-            
-            <section>
-                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Your Role: 3 Simple Tips for Accessible Resources</h2>
-                <p class="max-w-3xl mx-auto text-center text-gray-600 mb-10">You don't need to be an AT expert to make a huge difference. Building accessibility into your resources from the start is the most effective way to support all students.</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="bg-[#F7A823] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <p class="text-4xl font-extrabold">1</p>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Use True Headings</h3>
-                        <p class="text-gray-600">Instead of just making text bold and large, use the built-in "Heading 1," "Heading 2" styles in Word and your LMS. This creates a digital map that screen readers use for navigation.</p>
-                    </div>
+            </div>
+        </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="bg-[#F15D22] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <p class="text-4xl font-extrabold">2</p>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Add "Alt Text" to Images</h3>
-                        <p class="text-gray-600">Right-click any image and select "Edit Alt Text." Write a short description of the image's *meaning* or *purpose*. This is essential for students who are blind or have low vision.</p>
-                    </div>
+        <!-- Tool List Container -->
+        <div id="tool-list" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Cards will be injected here -->
+        </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="bg-[#75C141] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <p class="text-4xl font-extrabold">3</p>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Run the Accessibility Checker</h3>
-                        <p class="text-gray-600">Before publishing, use the built-in accessibility checker in Microsoft Office and other tools. It's like a spell-checker for inclusion and will find most common errors for you.</p>
-                    </div>
-                </div>
-            </section>
-            
-        </main>
-        
-        <footer class="text-center mt-16 border-t pt-8">
-            <p class="text-lg font-bold text-[#00A9E0]">Ready to learn more?</p>
-            <p class="text-gray-600">Contact the Access and Inclusion team for consultations and further training.</p>
-        </footer>
+        <!-- No Results Message -->
+        <div id="no-results" class="hidden text-center p-8 bg-yellow-100 border border-yellow-300 text-yellow-800 rounded-xl mt-8">
+            <p class="text-xl font-semibold">No tools match your current filters. Try broadening your search!</p>
+        </div>
 
     </div>
 
     <script>
-        function wrapLabel(label) {
-            const maxLength = 16;
-            if (typeof label !== 'string' || label.length <= maxLength) {
-                return label;
-            }
-            const words = label.split(' ');
-            const lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + ' ' + word).trim().length > maxLength) {
-                    lines.push(currentLine.trim());
-                    currentLine = word;
-                } else {
-                    currentLine = (currentLine + ' ' + word).trim();
-                }
-            }
-            if (currentLine) {
-                lines.push(currentLine.trim());
-            }
-            return lines;
+        // Data containing all the AT tools (combining all categories)
+        const AT_DATA = [
+            // Cognitive & Executive Function (Software)
+            { name: "Forest", details: "A productivity timer that gamifies focus. Users plant a virtual tree that grows while they work; if they leave the app, the tree dies.", needs: "ADHD/Executive Function", access: "Freemium", os: "iOS, Android, Chrome", category: "Cognitive & Executive Function", exam: "No", link: "https://www.forestapp.cc/help" },
+            { name: "Freedom", details: "A website and app blocker that allows users to block distracting sites and apps across all their devices simultaneously for set periods.", needs: "ADHD/Executive Function", access: "Paid", os: "Windows, Mac, iOS, Android, Chrome", category: "Cognitive & Executive Function", exam: "No", link: "https://freedom.to/help" },
+            { name: "Microsoft To Do", details: "A task management app to create lists, set reminders, and break down large tasks into manageable steps. Part of the Microsoft 365 suite.", needs: "ADHD/Executive Function, Organizational Challenges", access: "Inbuilt", os: "Windows, Mac, iOS, Android", category: "Cognitive & Executive Function", exam: "No", link: "https://support.microsoft.com/en-us/office/get-started-with-microsoft-to-do-2d701e68-07e5-4f36-a111-9659b8932de0" },
+            { name: "Microsoft Co-Pilot", details: "ECU's enterprise AI Tool. Use it to draft/plain-language, rewrite your own writing, create outlines, generate checklists, and refine captions/transcripts you’ve already produced.", needs: "ADHD/Executive Function, Processing Speed", access: "Freemium", os: "Windows, Mac, Web", category: "Cognitive & Executive Function", exam: "No", link: "https://support.microsoft.com/en-us/copilot" },
+            { name: "Goblin Tools", details: "A set of free AI tools, including 'The Magic Tool' for breaking down large tasks into manageable, actionable steps.", needs: "ADHD/Executive Function, Organizational Challenges", access: "Free", os: "Web, iOS, Android", category: "Cognitive & Executive Function", exam: "No", link: "https://goblin.tools/" },
+
+            // Reading, Writing & Literacy (Software)
+            { name: "Read&Write Gold", details: "An integrated toolbar providing text-to-speech, word prediction, picture dictionaries, highlighters, and a screen mask.", needs: "Dyslexia/Literacy, ADHD/Executive Function, Visual Stress", access: "Paid", os: "Windows, Mac, Chrome, iOS, Android", category: "Reading, Writing & Literacy", exam: "No", link: "https://www.texthelp.com/en-gb/products/read-write/support/" },
+            { name: "ClaroRead", details: "A toolbar offering text-to-speech with high-quality voices, word prediction, spellcheck, and screen tinting.", needs: "Dyslexia/Literacy, Visual Stress", access: "Paid", os: "Windows, Mac, Chrome", category: "Reading, Writing & Literacy", exam: "No", link: "https://www.clarosoftware.com/support/" },
+            { name: "Grammarly", details: "An advanced grammar checker, spell checker, and plagiarism detector. Provides suggestions on clarity, tone, and style.", needs: "Dyslexia/Literacy, Dysgraphia", access: "Freemium", os: "Windows, Mac, iOS, Android, Chrome", category: "Reading, Writing & Literacy", exam: "No", link: "https://support.grammarly.com/hc/en-us" },
+            { name: "SensusAccess", details: "An automated service that converts documents into a range of alternate formats (e.g., PDF to audio, Word, Braille, e-book).", needs: "Blindness/Low Vision, Dyslexia/Literacy", access: "Paid", os: "Web", category: "Reading, Writing & Literacy", exam: "No", link: "https://www.sensusaccess.com/support/" },
+            { name: "Immersive Reader", details: "A free tool built into Microsoft products that provides text-to-speech, line focus, translation, picture dictionary, and text spacing options.", needs: "Dyslexia/Literacy, ADHD/Executive Function", access: "Inbuilt", os: "Windows, Mac", category: "Reading, Writing & Literacy", exam: "No", link: "https://support.microsoft.com/en-us/topic/use-immersive-reader-in-microsoft-365-e9914619-3d0d-4050-8919-dd55601d3cb4" },
+            { name: "Balabolka", details: "A free text-to-speech program that can use all computer voices installed. It can save synchronized text in various audio formats (MP3, WAV, etc.).", needs: "Dyslexia/Literacy, Auditory Processing", access: "Free", os: "Windows", category: "Reading, Writing & Literacy", exam: "No", link: "http://www.cross-plus-a.com/balabolka.htm" },
+            { name: "Microsoft Read Aloud", details: "Text-to-speech function integrated into Microsoft Word, Edge, and other M365 applications.", needs: "Dyslexia/Literacy", access: "Inbuilt", os: "Windows, Mac, Web", category: "Reading, Writing & Literacy", exam: "Yes", link: "https://support.microsoft.com/en-us/office/read-aloud-in-the-editor-in-word-636c0a30-d399-4d9f-b040-6202166922d5" },
+            { name: "Apple Read and Speak", details: "System-level text-to-speech, including Speak Selection and Speak Screen features for reading selected text or the entire display.", needs: "Dyslexia/Literacy", access: "Inbuilt", os: "Mac, iOS", category: "Reading, Writing & Literacy", exam: "No", link: "https://support.apple.com/en-au/guide/mac-help/mh35878/mac" },
+            { name: "Adobe Read Aloud", details: "Text-to-speech function built into Adobe Acrobat Reader for reading PDF documents.", needs: "Dyslexia/Literacy", access: "Inbuilt", os: "Windows, Mac", category: "Reading, Writing & Literacy", exam: "No", link: "https://helpx.adobe.com/acrobat/using/read-out-loud-pdf.html" },
+            { name: "Natural Reader", details: "A popular, high-quality text-to-speech program with various voices and support for converting text, PDFs, and documents into speech.", needs: "Dyslexia/Literacy, Reading Fatigue", access: "Freemium", os: "Web, Windows, Mac, iOS, Android", category: "Reading, Writing & Literacy", exam: "No", link: "https://www.naturalreaders.com/help/" },
+            { name: "Chrome Read Aloud", details: "Features like 'Select to Speak' in Chrome OS/extensions that read selected text aloud in the browser environment.", needs: "Dyslexia/Literacy", access: "Inbuilt", os: "Chrome, Web", category: "Reading, Writing & Literacy", exam: "No", link: "https://support.google.com/chrome/answer/10046536?hl=en" },
+            { name: "Apple Reader View", details: "Formats a webpage to show only the relevant text and images, hiding navigation menus and other distracting items. Longer pages may include a summary and table of contents.", needs: "Cognitive Disabilities, Dyslexia/Literacy, Visual Stress", access: "Inbuilt", os: "Mac, iOS", category: "Reading, Writing & Literacy", exam: "No", link: "https://support.apple.com/en-au/guide/iphone/iphdc30e3b86/ios" },
+
+            // Speech & Voice Recognition (Software)
+            { name: "Dragon Professional", details: "Premium speech-to-text software for dictating documents, controlling a computer by voice, and creating custom voice commands.", needs: "Physical Mobility/RSI, Dysgraphia", access: "Paid", os: "Windows", category: "Speech & Voice Recognition", exam: "Yes", link: "https://www.nuance.com/support/dragon/dragon-professional-group/resources.html" },
+            { name: "Windows Voice Recognition", details: "Built-in tool for dictating text and controlling the Windows operating system with voice commands.", needs: "Physical Mobility/RSI, Dysgraphia", access: "Inbuilt", os: "Windows", category: "Speech & Voice Recognition", exam: "No", link: "https://support.microsoft.com/en-us/windows/use-voice-typing-to-talk-instead-of-type-0a09a562-b7e8-4228-a83d-6b5825a0b77b" },
+            { name: "Mac Dictation", details: "Built-in feature for dictating text in any application. Enhanced dictation allows for offline use.", needs: "Physical Mobility/RSI, Dysgraphia", access: "Inbuilt", os: "Mac, iOS", category: "Speech & Voice Recognition", exam: "Yes", link: "https://support.apple.com/en-au/guide/mac-help/mh40584/mac" },
+            { name: "Microsoft Dictate", details: "Native dictation feature built into Microsoft Word and other M365 apps.", needs: "Physical Mobility/RSI", access: "Inbuilt", os: "Windows, Mac", category: "Speech & Voice Recognition", exam: "Yes", link: "https://support.microsoft.com/en-us/office/dictate-your-documents-in-microsoft-365-387042a9-b003-4f90-99f4-3d191673c2a3" },
+            { name: "Mac VoiceControl", details: "Advanced system for controlling the device and inputting text entirely by voice commands, including custom controls.", needs: "Physical Mobility/RSI", access: "Inbuilt", os: "Mac, iOS", category: "Speech & Voice Recognition", exam: "Yes", link: "https://support.apple.com/en-au/guide/mac-help/mchl495b458c/mac" },
+            { name: "Voice Memos", details: "iPhone as a portable recording device to record personal notes, classroom lectures, musical ideas, and more.", needs: "Auditory Processing, Organizational Challenges", access: "Inbuilt", os: "iOS", category: "Speech & Voice Recognition", exam: "No", link: "https://support.apple.com/en-gb/guide/iphone/iph4d2a39a3b/ios" },
+
+            // Screen Readers & Visual Aids (Software)
+            { name: "JAWS", details: "Job Access With Speech (JAWS) is the world's most popular screen reader for users who are blind, reading aloud all on-screen content.", needs: "Blindness", access: "Paid", os: "Windows", category: "Screen Readers & Visual Aids", exam: "Yes", link: "https://www.freedomscientific.com/products/software/jaws/training-resources/" },
+            { name: "NVDA", details: "NonVisual Desktop Access (NVDA) is a powerful, free, open-source screen reader for Windows.", needs: "Blindness", access: "Free", os: "Windows", category: "Screen Readers & Visual Aids", exam: "Yes", link: "https://www.nvaccess.org/documentation/" },
+            { name: "ZoomText", details: "A screen magnification and reading software for users with low vision. It enhances and enlarges everything on screen and can read text aloud.", needs: "Low Vision", access: "Paid", os: "Windows, Mac", category: "Screen Readers & Visual Aids", exam: "Yes", link: "https://www.freedomscientific.com/products/software/zoomtext/training-resources/" },
+            { name: "VoiceOver", details: "A gesture-based screen reader built into all Apple devices, providing spoken descriptions of everything on the screen.", needs: "Blindness, Low Vision", access: "Inbuilt", os: "Mac, iOS", category: "Screen Readers & Visual Aids", exam: "No", link: "https://www.apple.com/au/accessibility/mac/vision/" },
+            { name: "Microsoft Narrator", details: "The native screen reading utility for Windows, providing spoken and braille feedback.", needs: "Blindness", access: "Inbuilt", os: "Windows", category: "Screen Readers & Visual Aids", exam: "Yes", link: "https://support.microsoft.com/en-us/windows/complete-guide-to-narrator-e4399e23-ea86-4983-9366-4cce63991107" },
+            { name: "Microsoft Magnifier", details: "Native screen magnification tool for Windows, allowing users to zoom and navigate the display.", needs: "Low Vision", access: "Inbuilt", os: "Windows", category: "Screen Readers & Visual Aids", exam: "Yes", link: "https://support.microsoft.com/en-us/windows/use-magnifier-to-make-things-on-screen-easier-to-see-414841e4-e7af-4b21-8f4b-2d7c5a0832a0" },
+            { name: "Mac Zoom", details: "System-level tools for screen magnification, cursor sizing, and colour inversion/filters (Mac Vision Tools).", needs: "Low Vision, Visual Stress", access: "Inbuilt", os: "Mac, iOS", category: "Screen Readers & Visual Aids", exam: "Yes", link: "https://support.apple.com/en-au/guide/mac-help/mchl085f1c9d/mac" },
+            { name: "Screen Shader", details: "Shades Chrome to a soothing orange color to decrease eye-strain, eye fatigue and to appease your brain's day/night cycle.", needs: "Visual Stress", access: "Free", os: "Chrome (Extension)", category: "Screen Readers & Visual Aids", exam: "No", link: "https://chromewebstore.google.com/detail/screen-shader-smart-scree/fmlboobidmkelggdainpknloccojpppi?utm_source=chrome-ntp-icon" },
+            { name: "Visor", details: "A Chrome extension that functions as a screen dimmer and reading aid, using overlays and a 'point of focus' feature to reduce eye strain, visual noise, and the tendency to skip lines.", needs: "Dyslexia, Scotopic Sensitivity Syndrome, Visual Stress", access: "Free", os: "Chrome (Extension)", category: "Screen Readers & Visual Aids", exam: "No", link: "https://chromewebstore.google.com/detail/visor/lhpbckonakppajdgicbjdfokagjofnob" },
+
+            // Captioning, Audio & Video Access (Software)
+            { name: "Genio (formerly Glean)", details: "Records lectures and allows students to tag key moments with simple labels or text notes. Creates an interactive audio recording synced to notes.", needs: "ADHD/Executive Function, Dyslexia/Literacy, Physical Mobility/RSI", access: "Paid", os: "Web, iOS, Android", category: "Captioning, Audio & Video Access", exam: "No", link: "https://help.glean.co/en/" },
+            { name: "Otter.ai", details: "Uses AI to generate real-time transcripts of lectures, meetings, and conversations. Can identify different speakers.", needs: "Hearing Impairment, Auditory Processing", access: "Freemium", os: "Web, iOS, Android", category: "Captioning, Audio & Video Access", exam: "No", link: "https://help.otter.ai/hc/en-us" },
+            { name: "YouTube Auto-captions", details: "Automatically generates captions for videos using speech recognition technology. Content creators can also edit them for accuracy.", needs: "Hearing Impairment", access: "Inbuilt", os: "Web", category: "Captioning, Audio & Video Access", exam: "No", link: "https://support.google.com/youtube/answer/100078?hl=en" },
+            { name: "Chrome Live Captions", details: "Real-time, system-level captioning for media played in the Chrome browser and other web content.", needs: "Hearing Impairment", access: "Inbuilt", os: "Chrome", category: "Captioning, Audio & Video Access", exam: "No", link: "https://support.google.com/chrome/answer/10538231?hl=en" },
+            { name: "Apple Live Captions", details: "System-wide real-time captioning for any audio (video calls, media, podcasts) played on the device.", needs: "Hearing Impairment", access: "Inbuilt", os: "Mac, iOS", category: "Captioning, Audio & Video Access", exam: "No", link: "https://support.apple.com/en-au/guide/mac-help/mchl1e87848f/mac" },
+
+            // Study, Planning & Organisation (Software/Strategy)
+            { name: "MindManager", details: "A professional mind mapping and diagramming tool used for brainstorming, planning assignments, and visualising complex information.", needs: "ADHD/Executive Function, Dyslexia/Literacy, Organizational Challenges", access: "Paid", os: "Windows, Mac", category: "Study, Planning & Organisation", exam: "No", link: "https://www.mindmanager.com/en/support/" },
+            { name: "XMind", details: "A popular and user-friendly mind mapping and brainstorming tool with a generous free version.", needs: "ADHD/Executive Function, Organizational Challenges", access: "Freemium", os: "Windows, Mac, iOS, Android", category: "Study, Planning & Organisation", exam: "No", link: "https://support.xmind.net/hc/en-us" },
+            { name: "Zotero", details: "A free reference management tool to help collect, organise, cite, and share research sources.", needs: "Organizational Challenges, ADHD/Executive Function", access: "Free", os: "Windows, Mac", category: "Study, Planning & Organisation", exam: "No", link: "https://www.zotero.org/support/" },
+            { name: "Notion", details: "An all-in-one workspace for notes, tasks, wikis, and databases. Highly customisable for creating personal study planners.", needs: "Organizational Challenges, ADHD/Executive Function", access: "Freemium", os: "Windows, Mac, iOS, Android", category: "Study, Planning & Organisation", exam: "No", link: "https://www.notion.so/help" },
+            { name: "OneNote", details: "Digital note-taking app with free-form organization, multimedia embedding, and integrated Immersive Reader.", needs: "Organizational Challenges, Dyslexia/Literacy", access: "Inbuilt", os: "Windows, Mac, iOS, Android", category: "Study, Planning & Organisation", exam: "No", link: "https://support.microsoft.com/en-us/onenote" },
+            { name: "NotebookLM", details: "An AI research assistant that generates summaries, outlines, and Q&A based on documents you upload, linking directly to sources.", needs: "Processing Speed, ADHD/Executive Function", access: "Free", os: "Web", category: "Study, Planning & Organisation", exam: "No", link: "https://support.google.com/notebooklm/answer/13935293?hl=en" },
+            { name: "Calendar (iOS)", details: "Use the Calendar app to track meetings, appointments, and reminders, all in one place.", needs: "Organizational Challenges", access: "Inbuilt", os: "iOS", category: "Study, Planning & Organisation", exam: "No", link: "https://support.apple.com/en-gb/guide/ipad/ipad99d9847f/ipados" },
+            { name: "My Homework", details: "The leading cross-platform student planner/agenda app to track assignments, schedules, and due dates, which helps to focus and reduce anxiety.", needs: "ADHD/Executive Function, Dyslexia/Literacy, Organizational Challenges", access: "Freemium", os: "Windows, Mac, iOS, Android, Chrome, Kindle Fire", category: "Study, Planning & Organisation", exam: "No", link: "https://myhomeworkapp.com/" },
+
+            // Physical Access & Ergonomic Tools (Software/OS Features)
+            { name: "Windows On-Screen KeyBoard", details: "A visual keyboard displayed on the screen that allows users to type using a mouse, switch, or other pointing device.", needs: "Physical Mobility/RSI", access: "Inbuilt", os: "Windows", category: "Physical Access & Ergonomic Tools", exam: "Yes", link: "https://support.microsoft.com/en-us/windows/use-the-on-screen-keyboard-osk-c90a5933-8b7e-4029-baa8-3486c138b939" },
+            { name: "Dwell Control (macOS)", details: "Allows users to control the pointer and perform mouse actions using tracking technology, such as head-tracking or eye-tracking hardware.", needs: "Physical Mobility/RSI", access: "Inbuilt", os: "Mac", category: "Physical Access & Ergonomic Tools", exam: "No", link: "https://support.apple.com/en-au/guide/mac-help/mchldd793132/mac" },
+            { name: "Apple Assistive Access", details: "A highly simplified user interface for iPhone/iPad apps, reducing cognitive load and visual complexity.", needs: "Cognitive Disabilities", access: "Inbuilt", os: "iOS", category: "Physical Access & Ergonomic Tools", exam: "No", link: "https://support.apple.com/en-us/HT213759" },
+
+            // Notetaking (Software/Strategy)
+            { name: "Note Anywhere", details: "A versatile Chrome extension to create floating sticky notes on any web page at any position, with notes tied to the specific URL. Notes are stored locally.", needs: "Cognitive, Organizational Challenges", access: "Free", os: "Chrome (Extension)", category: "Notetaking", exam: "No", link: "https://chromewebstore.google.com/detail/note-anywhere/bohahkiiknkelflnjjlipnaeapefmjbh" },
+            { name: "BeanNote", details: "A Chrome extension to highlight any text or image and create sticky notes/comments directly on web pages. Notes are saved to a dashboard and can be exported (Evernote, Word, HTML).", needs: "Reading, Notetaking, Research", access: "Free", os: "Chrome (Extension)", category: "Notetaking", exam: "No", link: "https://chromewebstore.google.com/detail/beanote-note-taking-on-we/nikccehomlnjkmgmhnieecolhgdafajb" },
+            { name: "Sketchnotes", details: "A versatile, low-tech note-taking **strategy** that uses a mixture of hand-drawn words, pictures, shapes, and connectors to synthesize and summarize information visually.", needs: "Organizational Challenges, Dyslexia/Literacy, ADHD, Auditory Processing", access: "N/A (Strategy/Method)", os: "N/A (Can be analog or digital)", category: "Notetaking", exam: "No", link: "https://www.verbaltovisual.com/sketchnoting-in-the-classroom/" },
+            { name: "Notability", details: "A powerful, paid note-taking app that allows users to **combine handwriting, typing, photos, and audio recordings** in a single document. It supports importing/annotating PDFs and slides.", needs: "Notetaking, Organizational Challenges, Auditory Processing", access: "Paid", os: "iOS (primarily iPad/Mac)", category: "Notetaking", exam: "No", link: "https://notability.com/" },
+
+            // Research (Software)
+            { name: "EasyBib Toolbar", details: "This bibliography and citation tool works with one click. Easily create a fully-formatted, alphabetized, and word processor-ready bibliography.", needs: "ADHD/Executive Function, Dyslexia/Literacy, Organizational Challenges", access: "Free", os: "Chrome, Microsoft", category: "Research", exam: "No", link: "https://chromewebstore.google.com/detail/easybib-toolbar/hmffdimoneaieldiddcmajhbjijmnggi?hl=en-US" },
+            { name: "Google Keep", details: "Along with helping students with organization and planning, Google Keep can also be used to collect research and organize information for projects.", needs: "Organizational Challenges, ADHD/Executive Function", access: "Free", os: "Chrome, iOS, Android, Web", category: "Research", exam: "No", link: "https://support.google.com/keep/?rd=1#!/&topic=6262468" },
+            { name: "Liner", details: "A productivity tool (Chrome extension/iPad app) for highlighting text across platforms, creating and collecting notes, and generating AI-powered research summaries.", needs: "Organizational Challenges, Research Support", access: "Freemium", os: "Chrome (Extension), iOS (App)", category: "Research; Notetaking", exam: "No", link: "https://liner.ai/" },
+            
+            // Cross-Platform (Software/OS Features)
+            { name: "Google Accessibility", details: "A suite of built-in features across Google products (e.g., ChromeVox, TalkBack, Select-to-Speak, Live Caption, Dictation) that provide screen reading, magnification, voice typing, and more.", needs: "Vision, Hearing, Physical Mobility, Cognitive & Learning", access: "Inbuilt", os: "Android, Chrome OS, Web, iOS", category: "Cross-Platform Accessibility", exam: "No", link: "https://support.google.com/accessibility/" },
+
+            // --- Consolidated Hardware & Ergonomics (Physical Devices and Embedded Tools) ---
+            { name: "Chair (Ergonomic)", details: "A fully adjustable ergonomic task chair designed to promote optimal posture, provide lumbar support, and minimize strain during long periods of sitting.", needs: "Ergonomic, Physical Mobility/RSI", access: "Paid", os: "N/A (Physical Device)", category: "Hardware & Ergonomics", exam: "Yes", link: "https://monash.edu/hsw/info-docs/ergonomics/ergonomic-task-chairs-ohs-information-sheet" },
+            { name: "Desk (Sit-Stand)", details: "A workstation, typically a height-adjustable sit-stand desk, that allows the user to transition between sitting and standing postures to reduce static load and improve circulation.", needs: "Ergonomic, Physical Mobility/RSI", access: "Paid", os: "N/A (Physical Device)", category: "Hardware & Ergonomics", exam: "Yes", link: "https://ergonomicoffice.com.au/pages/ergonomic-guidelines" },
+            { name: "Time Timer", details: "A visual countdown timer with a disappearing colored disk (typically red) to make the abstract concept of time tangible. It is silent and non-ticking.", needs: "ADHD/Executive Function, Autism, Anxiety/Time Management", access: "Paid", os: "N/A (Physical Device)", category: "Hardware & Ergonomics", exam: "No", link: "https://www.timetimer.com/" },
+            { name: "Keyboards (Large Print)", details: "Large Print & Large Key keyboards designed to make visual identification of keys easier and keypress more accessible.", needs: "Low Vision, Physical Mobility", access: "Paid", os: "N/A (Physical Device)", category: "Hardware & Ergonomics", exam: "Yes", link: "" },
+            { name: "C-Pen Reader", details: "A portable scanning pen that reads printed text aloud with a human-like digital voice, provides definitions via built-in dictionaries, and can record voice memos.", needs: "Dyslexia/Literacy, Reading Fatigue, ADHD", access: "Paid", os: "Embedded (Works standalone)", category: "Hardware & Ergonomics", exam: "No", link: "https://cpen.com/reader-pen/" },
+            { name: "C-Pen Exam Reader 2", details: "A portable scanning pen with a limited function set (read-aloud only, no dictionary/recording) often approved for exams.", needs: "Dyslexia/Literacy", access: "Paid", os: "Embedded (Works standalone)", category: "Hardware & Ergonomics", exam: "Yes", link: "C-Pen Exam Reader 2 – Dyslexia reading tools for tests" },
+            { name: "Scan Reader Pen", details: "A handheld scanner that uses OCR to scan and read printed or digital text aloud instantly (text-to-speech) and offers translation features for numerous languages.", needs: "Dyslexia/Literacy, Language Learning, Visual Impairments", access: "Paid", os: "Embedded (Works standalone)", category: "Hardware & Ergonomics", exam: "No", link: "https://www.aussiepharmadirect.com.au/collections/scanning-pen-reader" },
+        ];
+
+        const toolListElement = document.getElementById('tool-list');
+        const searchInput = document.getElementById('search-input');
+        const categoryFilter = document.getElementById('category-filter');
+        const examFilter = document.getElementById('exam-filter');
+        const noResultsElement = document.getElementById('no-results');
+
+        // --- Utility Functions ---
+
+        // Get all unique categories for the filter dropdown
+        function getUniqueCategories() {
+            const categories = AT_DATA.map(tool => tool.category);
+            return ['All', ...new Set(categories)].sort();
         }
 
-        const tooltipTitleCallback = (tooltipItems) => {
-            const item = tooltipItems[0];
-            let label = item.chart.data.labels[item.dataIndex];
-            if (Array.isArray(label)) {
-                return label.join(' ');
-            }
-            return label;
-        };
-        
-        const chartDefaults = {
-            plugins: {
-                legend: {
-                    labels: {
-                        font: {
-                            family: "'Inter', sans-serif",
-                            size: 12,
-                        },
-                        color: '#374151'
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        title: tooltipTitleCallback
-                    },
-                    bodyFont: {
-                        family: "'Inter', sans-serif",
-                    },
-                    titleFont: {
-                        family: "'Inter', sans-serif",
-                    }
-                }
-            },
-            responsive: true,
-            maintainAspectRatio: false,
-        };
-
-        const categoryData = {
-            labels: ['Reading, Writing & Literacy', 'Note-Taking & Audio', ['Speech & Voice', 'Recognition'], 'Screen Readers & Vision', 'Cognitive & Focus'],
-            datasets: [{
-                label: 'AT Usage',
-                data: [45, 25, 15, 10, 5],
-                backgroundColor: [
-                    '#00A9E0', 
-                    '#F7A823', 
-                    '#75C141', 
-                    '#F15D22', 
-                    '#6E267E'  
-                ],
-                borderColor: '#FFFFFF',
-                borderWidth: 2,
-                hoverOffset: 4
-            }]
-        };
-
-        const topToolsData = {
-            labels: ['Read&Write', 'Genio (Glean)', 'Dragon Professional', 'Immersive Reader', 'ZoomText'],
-            datasets: [{
-                label: 'Popularity Score',
-                data: [92, 85, 78, 70, 62],
-                backgroundColor: [
-                    'rgba(0, 169, 224, 0.7)',
-                    'rgba(247, 168, 35, 0.7)',
-                    'rgba(117, 193, 65, 0.7)',
-                    'rgba(241, 93, 34, 0.7)',
-                    'rgba(110, 38, 126, 0.7)'
-                ],
-                borderColor: [
-                    '#00A9E0',
-                    '#F7A823',
-                    '#75C141',
-                    '#F15D22',
-                    '#6E267E'
-                ],
-                borderWidth: 2
-            }]
-        };
-
-        window.onload = function() {
-            const ctxCategory = document.getElementById('categoryChart').getContext('2d');
-            new Chart(ctxCategory, {
-                type: 'doughnut',
-                data: categoryData,
-                options: {
-                    ...chartDefaults,
-                }
+        // Generate filter options
+        function populateCategoryFilter() {
+            const categories = getUniqueCategories();
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
             });
+        }
 
-            const ctxTopTools = document.getElementById('topToolsChart').getContext('2d');
-            new Chart(ctxTopTools, {
-                type: 'bar',
-                data: topToolsData,
-                options: {
-                    ...chartDefaults,
-                    indexAxis: 'y',
-                    scales: {
-                        x: {
-                            beginAtZero: true,
-                            ticks: { color: '#374151', font: { family: "'Inter', sans-serif" } },
-                            grid: { color: '#e5e7eb' }
-                        },
-                        y: {
-                            ticks: { color: '#374151', font: { family: "'Inter', sans-serif" } },
-                            grid: { display: false }
+        // Generate HTML for a single tool card
+        function createToolCard(tool) {
+            const examColor = tool.exam === "Yes" ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700';
+            const examIcon = tool.exam === "Yes" ? '&#10003;' : '&#x2715;'; // Check/Cross mark
+            
+            return `
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:scale-[1.01] flex flex-col">
+                    <div class="flex justify-between items-start mb-3">
+                        <h2 class="text-xl font-bold text-gray-900">${tool.name}</h2>
+                        <span class="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full ${examColor}">
+                            ${examIcon} Exam: ${tool.exam}
+                        </span>
+                    </div>
+                    
+                    <p class="text-gray-500 mb-4 flex-grow">${tool.details}</p>
+
+                    <div class="space-y-2 text-sm">
+                        <p class="text-blue-600 font-semibold">Support Needs:</p>
+                        <p class="text-gray-700">${tool.needs}</p>
+                        <div class="grid grid-cols-2 gap-4 border-t pt-2 mt-2">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Access Type:</p>
+                                <p class="text-gray-800 font-semibold">${tool.access}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Operating System:</p>
+                                <p class="text-gray-800 font-semibold">${tool.os}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
+                        <span class="text-xs font-medium text-purple-600 bg-purple-100 px-3 py-1 rounded-full">${tool.category}</span>
+                        ${tool.link ? 
+                            `<a href="${tool.link}" target="_blank" class="text-sm font-semibold text-blue-600 hover:text-blue-800 transition flex items-center">
+                                Resource Link
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </a>` : `<span class="text-sm text-gray-500">No Link Available</span>`
                         }
-                    },
-                    plugins: {
-                       ...chartDefaults.plugins,
-                       legend: { display: false }
-                    }
-                }
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- Filtering Logic ---
+
+        function filterTools() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const selectedCategory = categoryFilter.value;
+            const selectedExamStatus = examFilter.value;
+
+            const filteredTools = AT_DATA.filter(tool => {
+                // 1. Category Filter
+                const categoryMatch = selectedCategory === 'All' || tool.category === selectedCategory;
+
+                // 2. Exam Status Filter
+                const examMatch = selectedExamStatus === 'All' || tool.exam === selectedExamStatus;
+
+                // 3. Search Term Filter (checks name, details, and support needs)
+                const searchMatch = 
+                    tool.name.toLowerCase().includes(searchTerm) ||
+                    tool.details.toLowerCase().includes(searchTerm) ||
+                    tool.needs.toLowerCase().includes(searchTerm) ||
+                    tool.os.toLowerCase().includes(searchTerm);
+
+                return categoryMatch && examMatch && searchMatch;
             });
+
+            renderTools(filteredTools);
+        }
+
+        function renderTools(tools) {
+            toolListElement.innerHTML = ''; // Clear existing cards
+            
+            if (tools.length === 0) {
+                noResultsElement.classList.remove('hidden');
+            } else {
+                noResultsElement.classList.add('hidden');
+                const fragment = document.createDocumentFragment();
+                tools.forEach(tool => {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = createToolCard(tool);
+                    fragment.appendChild(tempDiv.firstChild);
+                });
+                toolListElement.appendChild(fragment);
+            }
+        }
+
+        // --- Initialization ---
+
+        window.onload = () => {
+            // Populate filters first
+            populateCategoryFilter();
+
+            // Attach event listeners
+            searchInput.addEventListener('input', filterTools);
+            categoryFilter.addEventListener('change', filterTools);
+            examFilter.addEventListener('change', filterTools);
+
+            // Initial render of all tools
+            renderTools(AT_DATA);
         };
     </script>
 </body>
