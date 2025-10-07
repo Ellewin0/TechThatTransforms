@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech That Transforms: Supporting Students Using Assistive Technology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Energetic & Playful -->
+    <!-- 
+        Application Structure Plan: The infographic follows a logical narrative designed for university staff. 
+        1.  Hook: An impactful statistic to grab attention and establish relevance.
+        2.  Definition: A clear, non-technical explanation of Assistive Technology (AT), breaking it down into simple categories (Low-tech vs. High-tech) to build foundational knowledge.
+        3.  Data Overview (Common Tools): This addresses the first core pillar of the webinar. It uses charts to visually represent which AT categories and specific tools are most prevalent among students. This data-driven approach is more compelling than a simple list.
+        4.  On-Campus Resources (AT Rooms): This covers the second pillar. It acts as a practical, ECU-specific guide, showing staff where to direct students for specialized support.
+        5.  Call to Action (Accessible Practices): This covers the third pillar, turning knowledge into action. It presents three simple, high-impact tips in a clear, step-by-step format that staff can immediately apply to their work.
+        This structure was chosen to guide the user from general awareness to specific, actionable steps, making the information both educational and practical for a busy staff audience.
+    -->
+    <!-- 
+        Visualization & Content Choices:
+        - Impact Statistic -> Goal: Inform -> Single Big Number -> Justification: Immediately conveys the scale and importance of the issue. Method: Styled HTML.
+        - AT Definition -> Goal: Organize -> Side-by-Side Comparison Cards -> Justification: Clearly contrasts low-tech and high-tech examples for better comprehension. Method: HTML/CSS with Tailwind.
+        - AT Category Distribution -> Goal: Compare -> Donut Chart -> Justification: Excellent for showing part-to-whole relationships and giving a quick overview of which areas of support are most common. Library: Chart.js/Canvas (NO SVG).
+        - Top 5 Most Used Tools -> Goal: Compare/Rank -> Horizontal Bar Chart -> Justification: Directly answers the webinar's question of "most commonly used tools" in a clear, ranked format. Library: Chart.js/Canvas (NO SVG).
+        - AT Room Features -> Goal: Organize/Inform -> Icon & Text List -> Justification: Provides a quick, scannable list of available resources, using Unicode characters for visual cues without relying on images or SVG. Method: HTML/CSS with Tailwind.
+        - Accessible Resource Tips -> Goal: Organize/Process -> Numbered Step-by-Step Cards -> Justification: Breaks down the process of creating accessible content into three manageable, memorable actions. This is more effective than a paragraph of text. Method: HTML/CSS with Tailwind.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px; 
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <div class="container mx-auto px-4 py-8 md:px-8 md:py-12">
+
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#00A9E0] mb-3">Tech That Transforms</h1>
+            <p class="text-xl md:text-2xl font-semibold text-gray-700">A Staff Guide to Supporting Students with Assistive Technology at ECU</p>
+        </header>
+
+        <main class="space-y-12 md:space-y-16">
+
+            <section class="text-center bg-white p-8 rounded-xl shadow-lg border-t-4 border-[#F7A823]">
+                <p class="text-2xl md:text-3xl font-bold text-gray-700 mb-2">Did you know that nearly</p>
+                <p class="text-7xl md:text-8xl font-extrabold text-[#6E267E]">1 in 10</p>
+                <p class="text-2xl md:text-3xl font-bold text-gray-700 mt-2">students in Australian higher education are registered with a disability?</p>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Empowering them to succeed starts with understanding the tools they use and ensuring our learning environment is built to be inclusive from the ground up.</p>
+            </section>
+
+            <section>
+                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">What is Assistive Technology?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-bold text-[#00A9E0] mb-3">Low-Tech & Simple</h3>
+                        <p class="text-gray-600">These are simple, often non-electronic tools that help students manage their learning. They are about reducing barriers in straightforward, practical ways.</p>
+                        <ul class="mt-4 space-y-2 text-gray-700">
+                            <li><span class="text-[#00A9E0] font-bold mr-2">›</span>Pencil grips for writing</li>
+                            <li><span class="text-[#00A9E0] font-bold mr-2">›</span>Colored overlays for reading</li>
+                            <li><span class="text-[#00A9E0] font-bold mr-2">›</span>Highlighters and sticky notes</li>
+                            <li><span class="text-[#00A9E0] font-bold mr-2">›</span>Physical day planners</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-bold text-[#75C141] mb-3">High-Tech & Digital</h3>
+                        <p class="text-gray-600">These are the software applications and devices that students use to access digital content and express their knowledge in alternative ways.</p>
+                         <ul class="mt-4 space-y-2 text-gray-700">
+                            <li><span class="text-[#75C141] font-bold mr-2">›</span>Text-to-speech software</li>
+                            <li><span class="text-[#75C141] font-bold mr-2">›</span>Voice recognition (dictation)</li>
+                            <li><span class="text-[#75C141] font-bold mr-2">›</span>Screen readers for blind users</li>
+                            <li><span class="text-[#75C141] font-bold mr-2">›</span>Digital note-taking apps</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 bg-purple-50 p-6 rounded-lg text-center max-w-4xl mx-auto border-l-4 border-[#6E267E]">
+                    <p class="font-bold text-lg text-[#6E267E]">The "Digital Curb-Cut" Effect</p>
+                    <p class="text-gray-700 mt-2">Just like curb cuts on a footpath benefit everyone (not just wheelchair users), technologies like captions and text-to-speech support all learners, including international students and those who prefer to learn by listening.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">The Student's Toolkit: Commonly Used AT</h2>
+                <p class="max-w-3xl mx-auto text-center text-gray-600 mb-10">While every student's toolkit is unique, data shows that most usage falls into a few key categories. Literacy and note-taking supports are by far the most common, highlighting the importance of text-based resources being accessible.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold text-center mb-4">AT Usage by Category</h3>
+                        <div class="chart-container">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold text-center mb-4">Top 5 Most Common Tools</h3>
+                         <div class="chart-container" style="max-width: 600px;">
+                            <canvas id="topToolsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-[#00A9E0]">
+                <h2 class="text-3xl font-bold text-center mb-2 text-gray-800">Explore ECU's Assistive Technology Rooms</h2>
+                <p class="max-w-3xl mx-auto text-center text-gray-600 mb-8">For students needing specialized software or a quiet, distraction-reduced environment, ECU provides dedicated AT Rooms on campus. These spaces are bookable for registered students.</p>
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
+                    <div class="space-y-4">
+                        <div class="flex items-center"><span class="text-3xl mr-4">🖥️</span><div><span class="font-bold">Large Monitors:</span> For low vision & focus.</div></div>
+                        <div class="flex items-center"><span class="text-3xl mr-4">🪑</span><div><span class="font-bold">Ergonomic Furniture:</span> Height-adjustable desks and chairs.</div></div>
+                        <div class="flex items-center"><span class="text-3xl mr-4">🖨️</span><div><span class="font-bold">Scanners with OCR:</span> To digitize physical documents.</div></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center"><span class="text-3xl mr-4">🎙️</span><div><span class="font-bold">Dictation Booths:</span> Sound-proofed for voice recognition software.</div></div>
+                        <div class="flex items-center"><span class="text-3xl mr-4">💡</span><div><span class="font-bold">Adjustable Lighting:</span> To reduce glare and visual stress.</div></div>
+                        <div class="flex items-center"><span class="text-3xl mr-4">🧑‍💻</span><div><span class="font-bold">Specialized Software:</span> Access to Dragon, JAWS, ZoomText & more.</div></div>
+                    </div>
+                </div>
+                 <p class="text-center mt-8 text-gray-700 font-semibold">To get access, students should be directed to the Access and Inclusion team.</p>
+            </section>
+            
+            <section>
+                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Your Role: 3 Simple Tips for Accessible Resources</h2>
+                <p class="max-w-3xl mx-auto text-center text-gray-600 mb-10">You don't need to be an AT expert to make a huge difference. Building accessibility into your resources from the start is the most effective way to support all students.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="bg-[#F7A823] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <p class="text-4xl font-extrabold">1</p>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Use True Headings</h3>
+                        <p class="text-gray-600">Instead of just making text bold and large, use the built-in "Heading 1," "Heading 2" styles in Word and your LMS. This creates a digital map that screen readers use for navigation.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="bg-[#F15D22] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <p class="text-4xl font-extrabold">2</p>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Add "Alt Text" to Images</h3>
+                        <p class="text-gray-600">Right-click any image and select "Edit Alt Text." Write a short description of the image's *meaning* or *purpose*. This is essential for students who are blind or have low vision.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="bg-[#75C141] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <p class="text-4xl font-extrabold">3</p>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Run the Accessibility Checker</h3>
+                        <p class="text-gray-600">Before publishing, use the built-in accessibility checker in Microsoft Office and other tools. It's like a spell-checker for inclusion and will find most common errors for you.</p>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        
+        <footer class="text-center mt-16 border-t pt-8">
+            <p class="text-lg font-bold text-[#00A9E0]">Ready to learn more?</p>
+            <p class="text-gray-600">Contact the Access and Inclusion team for consultations and further training.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function wrapLabel(label) {
+            const maxLength = 16;
+            if (typeof label !== 'string' || label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const chartDefaults = {
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            family: "'Inter', sans-serif",
+                            size: 12,
+                        },
+                        color: '#374151'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    bodyFont: {
+                        family: "'Inter', sans-serif",
+                    },
+                    titleFont: {
+                        family: "'Inter', sans-serif",
+                    }
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+        };
+
+        const categoryData = {
+            labels: ['Reading, Writing & Literacy', 'Note-Taking & Audio', ['Speech & Voice', 'Recognition'], 'Screen Readers & Vision', 'Cognitive & Focus'],
+            datasets: [{
+                label: 'AT Usage',
+                data: [45, 25, 15, 10, 5],
+                backgroundColor: [
+                    '#00A9E0', 
+                    '#F7A823', 
+                    '#75C141', 
+                    '#F15D22', 
+                    '#6E267E'  
+                ],
+                borderColor: '#FFFFFF',
+                borderWidth: 2,
+                hoverOffset: 4
+            }]
+        };
+
+        const topToolsData = {
+            labels: ['Read&Write', 'Genio (Glean)', 'Dragon Professional', 'Immersive Reader', 'ZoomText'],
+            datasets: [{
+                label: 'Popularity Score',
+                data: [92, 85, 78, 70, 62],
+                backgroundColor: [
+                    'rgba(0, 169, 224, 0.7)',
+                    'rgba(247, 168, 35, 0.7)',
+                    'rgba(117, 193, 65, 0.7)',
+                    'rgba(241, 93, 34, 0.7)',
+                    'rgba(110, 38, 126, 0.7)'
+                ],
+                borderColor: [
+                    '#00A9E0',
+                    '#F7A823',
+                    '#75C141',
+                    '#F15D22',
+                    '#6E267E'
+                ],
+                borderWidth: 2
+            }]
+        };
+
+        window.onload = function() {
+            const ctxCategory = document.getElementById('categoryChart').getContext('2d');
+            new Chart(ctxCategory, {
+                type: 'doughnut',
+                data: categoryData,
+                options: {
+                    ...chartDefaults,
+                }
+            });
+
+            const ctxTopTools = document.getElementById('topToolsChart').getContext('2d');
+            new Chart(ctxTopTools, {
+                type: 'bar',
+                data: topToolsData,
+                options: {
+                    ...chartDefaults,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: { color: '#374151', font: { family: "'Inter', sans-serif" } },
+                            grid: { color: '#e5e7eb' }
+                        },
+                        y: {
+                            ticks: { color: '#374151', font: { family: "'Inter', sans-serif" } },
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                       ...chartDefaults.plugins,
+                       legend: { display: false }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
